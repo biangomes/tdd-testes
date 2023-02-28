@@ -30,3 +30,6 @@ public class CalculadoraTest {
 }
 ```
 
+---
+
+Agora será trabalhado as classes `Funcionario` dentro de `.../modelo/` e `BonusService` dentro de `.../service/`.
