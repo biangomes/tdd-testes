@@ -23,13 +23,13 @@ class BonusServiceTest {
     void bonusDeveSerDezPorCentoParaSalarioIgualADezMil() {
         BonusService bonusService = new BonusService();
         BigDecimal bonus = bonusService.calcularBonus(new Funcionario("Beatriz", LocalDate.now(), new BigDecimal(10000)));
-        Assert.assertEquals(bonus, bonus);
+        Assert.assertEquals(new BigDecimal("1000.0"), bonus);
     }
 
-//    @Test
-//    void bonusDeveSerDezPorCentoParaSalarioIgualADezMil() {
-//        BonusService bonusService = new BonusService();
-//        BigDecimal bonus = bonusService.calcularBonus(new Funcionario("Rodrigo", LocalDate.now(), new BigDecimal((10000))));
-//        Assert.assertEquals(bonusService, bonus);
-//    }
+    @org.junit.jupiter.api.Test
+    void bonusDeveSerDezPorCentoDoSalarioParaSalarioMenorQueDezMil() {
+        BonusService bonusService = new BonusService();
+        BigDecimal bonus = bonusService.calcularBonus(new Funcionario("Beatriz", LocalDate.now(), new BigDecimal(2500)));
+        Assert.assertEquals(new BigDecimal("250.0"), bonus);
+    }
 }

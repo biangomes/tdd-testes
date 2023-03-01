@@ -36,3 +36,4 @@ Agora será trabalhado as classes `Funcionario` dentro de `.../modelo/` e `Bonus
 
 Para criar testes no IntelliJ de forma simplificada, basta clicar com o botão direito ao lado do método alvo - ou pressionar Alt + Insert - e escolher a opção de `Test`.
 Já será criado um teste dentro do `src/test/java/nome_do_pacote/`.
+
