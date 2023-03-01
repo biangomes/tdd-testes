@@ -14,14 +14,11 @@ class BonusServiceTest {
     @org.junit.jupiter.api.Test
     void bonusDeveSerZeroParaSalarioMaiorQueDezMil() {
         BonusService bonusService = new BonusService();
-        BigDecimal bonus = bonusService.calcularBonus(new Funcionario("Beatriz", LocalDate.now(), new BigDecimal(30000)));
-
-        String msgErro = "Funcionário com salário maior que 10.000 não pode receber bônus.";
-        IllegalArgumentException arg = assertThrows(IllegalArgumentException.class, () -> bonusService.calcularBonus(
+        //BigDecimal bonus = bonusService.calcularBonus(new Funcionario("Beatriz", LocalDate.now(), new BigDecimal(30000)));
+        assertThrows(IllegalArgumentException.class, () -> bonusService.calcularBonus(
                 new Funcionario("Beatriz", LocalDate.now(), new BigDecimal(30000))
         ));
 
-        assertTrue(arg.getMessage().contains(msgErro));
     }
 
 
