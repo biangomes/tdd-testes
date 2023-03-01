@@ -41,3 +41,13 @@ Já será criado um teste dentro do `src/test/java/nome_do_pacote/`.
 
 Nesta abordagem, o fluxo de desenvolvimento será: Testes -> Implementação -> Refatoração. Este último retorna para Testes. Essa abordagem se chama **_Test-Driven Development_**.
 
+### Funcionalidade (objetivo: implementar TDD)
+
+#### Reajuste baseado no desempenho anual
+
+O sistema deve permitir que os funcionários recebam um reajuste salarial anual baseado em seu desempenho, obedecendo as seguintes regras:
+
+- Se o desempenho foi "A desejar", reajuste será de apenas 3% do salário;
+- Se o desempenho foi "Bom", reajuste será de 15% do salário;
+- Se o desempenho foi "Ótimo", reajuste será de 20% do salário.
+

@@ -13,7 +13,7 @@ class BonusServiceTest {
     // Salario maior que 10.000
     @org.junit.jupiter.api.Test
     void bonusDeveSerZeroParaSalarioMaiorQueDezMil() {
-    BonusService bonusService = new BonusService();
+        BonusService bonusService = new BonusService();
         BigDecimal bonus = bonusService.calcularBonus(new Funcionario("Beatriz", LocalDate.now(), new BigDecimal(30000)));
 
         Assert.assertEquals(BigDecimal.ZERO, bonus);
