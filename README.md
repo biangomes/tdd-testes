@@ -51,3 +51,6 @@ O sistema deve permitir que os funcionários recebam um reajuste salarial anual 
 - Se o desempenho foi "Bom", reajuste será de 15% do salário;
 - Se o desempenho foi "Ótimo", reajuste será de 20% do salário.
 
+Agora, no tópico 04, é visto **refatoração**. Esta nada mais é do que modificar o código, sem alterar o comportamento.
+
+Como o único parâmetro que influencia a estratégia de reajuste, é o desempenho, podemos removar aquela quantidade de `if ... else` e criar um método abstrato, direto no enum (`Desempenho`).

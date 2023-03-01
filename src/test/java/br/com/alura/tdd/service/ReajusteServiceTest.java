@@ -38,6 +38,6 @@ public class ReajusteServiceTest {
 
         reajusteService.valorReajuste(funcionario, Desempenho.OTIMO);
 
-        Assert.assertEquals(new BigDecimal("1300.00"), funcionario.getSalario());
+        Assert.assertEquals(new BigDecimal("1200.00"), funcionario.getSalario());
     }
 }
