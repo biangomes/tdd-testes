@@ -2,7 +2,7 @@ package br.com.alura.tdd.service;
 
 import br.com.alura.tdd.modelo.Funcionario;
 import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -16,7 +16,12 @@ class BonusServiceTest {
         BonusService bonusService = new BonusService();
         BigDecimal bonus = bonusService.calcularBonus(new Funcionario("Beatriz", LocalDate.now(), new BigDecimal(30000)));
 
-        Assert.assertEquals(BigDecimal.ZERO, bonus);
+        String msgErro = "Funcionário com salário maior que 10.000 não pode receber bônus.";
+        IllegalArgumentException arg = assertThrows(IllegalArgumentException.class, () -> bonusService.calcularBonus(
+                new Funcionario("Beatriz", LocalDate.now(), new BigDecimal(30000))
+        ));
+
+        assertTrue(arg.getMessage().contains(msgErro));
     }
 
 
