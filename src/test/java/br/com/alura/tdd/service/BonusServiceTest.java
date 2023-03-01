@@ -10,15 +10,17 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BonusServiceTest {
 
-
+    // Salario maior que 10.000
     @org.junit.jupiter.api.Test
     void bonusDeveSerZeroParaSalarioMaiorQueDezMil() {
     BonusService bonusService = new BonusService();
-        BigDecimal bonus = bonusService.calcularBonus(new Funcionario("Rodrigo", LocalDate.now(), new BigDecimal(30000)));
+        BigDecimal bonus = bonusService.calcularBonus(new Funcionario("Beatriz", LocalDate.now(), new BigDecimal(30000)));
 
         Assert.assertEquals(BigDecimal.ZERO, bonus);
     }
 
+
+    // Salario igual 10.000
     @org.junit.jupiter.api.Test
     void bonusDeveSerDezPorCentoParaSalarioIgualADezMil() {
         BonusService bonusService = new BonusService();
@@ -26,6 +28,8 @@ class BonusServiceTest {
         Assert.assertEquals(new BigDecimal("1000.0"), bonus);
     }
 
+
+    // Salario menor que 10.000
     @org.junit.jupiter.api.Test
     void bonusDeveSerDezPorCentoDoSalarioParaSalarioMenorQueDezMil() {
         BonusService bonusService = new BonusService();
