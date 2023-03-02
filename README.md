@@ -54,3 +54,46 @@ O sistema deve permitir que os funcionários recebam um reajuste salarial anual 
 Agora, no tópico 04, é visto **refatoração**. Esta nada mais é do que modificar o código, sem alterar o comportamento.
 
 Como o único parâmetro que influencia a estratégia de reajuste, é o desempenho, podemos removar aquela quantidade de `if ... else` e criar um método abstrato, direto no enum (`Desempenho`).
+
+Foi visto como realizar teste unitário de uma `Exception`. Existem duas implementações a priori, em que uma é utilizando o bloco `try ... catch`
+e a outra é utilizando o `assertThrows` junto à uma função lambda.
+
+```java
+    @org.junit.jupiter.api.Test
+    void bonusDeveSerZeroParaSalarioMaiorQueDezMil() {
+        BonusService bonusService = new BonusService();
+        //BigDecimal bonus = bonusService.calcularBonus(new Funcionario("Beatriz", LocalDate.now(), new BigDecimal(30000)));
+//        assertThrows(IllegalArgumentException.class, () -> bonusService.calcularBonus(
+//                new Funcionario("Beatriz", LocalDate.now(), new BigDecimal(30000))
+//        ));
+
+        // outra implementacao
+        try {
+            bonusService.calcularBonus(new Funcionario("beatriz", LocalDate.now(), new BigDecimal(30000.00)));
+            fail("nao deu exception");
+        } catch (Exception e) {
+
+        }
+```
+Abordagem `try ... catch` acima.
+
+Abordagem usando `assertThrows` abaixo.
+```java
+    @org.junit.jupiter.api.Test
+    void bonusDeveSerZeroParaSalarioMaiorQueDezMil() {
+        BonusService bonusService = new BonusService();
+        //BigDecimal bonus = bonusService.calcularBonus(new Funcionario("Beatriz", LocalDate.now(), new BigDecimal(30000)));
+        assertThrows(IllegalArgumentException.class, () -> bonusService.calcularBonus(
+                new Funcionario("Beatriz", LocalDate.now(), new BigDecimal(30000))
+        ));
+
+        // outra implementacao
+//        try {
+//            bonusService.calcularBonus(new Funcionario("beatriz", LocalDate.now(), new BigDecimal(30000.00)));
+//            fail("nao deu exception");
+//        } catch (Exception e) {
+//
+//        }
+    }
+
+```
