@@ -123,3 +123,18 @@ Porém, além de o professor ter feito de outra forma, ao procurar no fórum do 
 > Estava assistindo o primeiro vídeo da aula 5 e o professor indicou utilizar o Annotation @BeforeEach. Mas pensei comigo mesmo que poderiamos inicializar os atributor no construtor também. Esta seria uma opção viavel?  Obrigado
 
 E então foi dito pelo instrutor, que ao utilizar a annotation `@BeforeEach` é garantido que cada teste seja rodado de forma independente.
+
+O `@BeforeEach` diz que: 
+> *Antes* de **cada** teste, execute _isso_.
+
+Existe também a annotation `@AfterEach` que diz:
+> *Depois* de **cada** teste, execute _isso_.
+
+Também existe as annotations `@BeforeAll` e `@AfterAll`, que diferencia das anteriores porque estas são antes e depois do início da aplicação como um todo, respectivamente. Ou seja, executa apenas uma vez.
+
+
+Exemplo de aplicações das annotations acima:
+
+- Inicializar conexão para cada teste;
+- Finalizar conexão para cada teste.
+

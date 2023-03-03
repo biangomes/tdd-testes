@@ -2,8 +2,7 @@ package br.com.alura.tdd.service;
 
 import br.com.alura.tdd.modelo.Funcionario;
 import org.junit.Assert;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -21,8 +20,25 @@ public class ReajusteServiceTest {
 
     @BeforeEach
     public void inicializar() {
+        System.out.println("Método inicializar com a anotação @BeforeEach");
         this.reajusteService = new ReajusteService();
         this.funcionario = new Funcionario("Beatriz", LocalDate.now(), new BigDecimal(1000));
+    }
+
+    // Annotation @AfterEach
+    @AfterEach
+    public void finalizar() {
+        System.out.println("Método finalizar com a anotação @AfterEach");
+    }
+
+    @BeforeAll
+    public static void antesDeTodos() {
+        System.out.println("=====INICIO=====");
+    }
+
+    @AfterAll
+    public static void depoisDeTodos() {
+        System.out.println("=====FIM=====");
     }
 
     @Test
