@@ -2,6 +2,7 @@ package br.com.alura.tdd.service;
 
 import br.com.alura.tdd.modelo.Funcionario;
 import org.junit.Assert;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -9,10 +10,25 @@ import java.time.LocalDate;
 
 public class ReajusteServiceTest {
 
+
+    // Minha refatoracao
+    // ReajusteService reajusteService = new ReajusteService();
+    // Funcionario funcionario = new Funcionario("Beatriz", LocalDate.now(), new BigDecimal(1000));
+
+    // Refatoracao da aula
+    private ReajusteService reajusteService;
+    private Funcionario funcionario;
+
+    @BeforeEach
+    public void inicializar() {
+        this.reajusteService = new ReajusteService();
+        this.funcionario = new Funcionario("Beatriz", LocalDate.now(), new BigDecimal(1000));
+    }
+
     @Test
     void reajusteDeveSerDeTresPorCentoQuandoDesempenhoForADesejar() {
-        ReajusteService reajusteService = new ReajusteService();
-        Funcionario funcionario = new Funcionario("Beatriz", LocalDate.now(), new BigDecimal(1000));
+//        ReajusteService reajusteService = new ReajusteService();
+//        Funcionario funcionario = new Funcionario("Beatriz", LocalDate.now(), new BigDecimal(1000));
 
         reajusteService.valorReajuste(funcionario, Desempenho.A_DESEJAR);
 
@@ -22,8 +38,8 @@ public class ReajusteServiceTest {
 
     @Test
     void reajusteDeveSerQuinzePorCentoQuandoDesempenhoForBom() {
-        ReajusteService reajusteService = new ReajusteService();
-        Funcionario funcionario = new Funcionario("Beatriz", LocalDate.now(), new BigDecimal(1000));
+//        ReajusteService reajusteService = new ReajusteService();
+//        Funcionario funcionario = new Funcionario("Beatriz", LocalDate.now(), new BigDecimal(1000));
 
         reajusteService.valorReajuste(funcionario, Desempenho.BOM);
 
@@ -33,8 +49,8 @@ public class ReajusteServiceTest {
 
     @Test
     void reajusteDeveSerVintePorCentoQuandoDesempenhoForOtimo() {
-        ReajusteService reajusteService = new ReajusteService();
-        Funcionario funcionario = new Funcionario("Beatriz", LocalDate.now(), new BigDecimal(1000));
+//        ReajusteService reajusteService = new ReajusteService();
+//        Funcionario funcionario = new Funcionario("Beatriz", LocalDate.now(), new BigDecimal(1000));
 
         reajusteService.valorReajuste(funcionario, Desempenho.OTIMO);
 

@@ -95,5 +95,31 @@ Abordagem usando `assertThrows` abaixo.
 //
 //        }
     }
-
 ```
+---
+
+### Aula 05. Mais recursos
+
+A refatoração, caso seja necessária, deve ser realizada nos testes também.
+
+Ao olhar a classe `ReajusteServiceTest`, é visto que cada teste instancia um objeto do tipo `ReajusteService` e `Funcionario`. Então, a primeira refatoração é passar para um escopo "global".
+
+Eu pensei em fazer isso passando para o construtor, ficando da forma abaixo:
+
+```java
+    // Refatoracao da aula
+    private ReajusteService reajusteService;
+    private Funcionario funcionario;
+
+    public ReajusteServiceTest() {
+        this.reajusteService = new ReajusteService();
+        this.funcionario = new Funcionario("Beatriz", LocalDate.now(), new BigDecimal(1000));
+    }
+```
+
+Porém, além de o professor ter feito de outra forma, ao procurar no fórum do curso encontrei essa question:
+
+> [Dúvida] Poderia executar o método inicializar no construtor? 
+> Estava assistindo o primeiro vídeo da aula 5 e o professor indicou utilizar o Annotation @BeforeEach. Mas pensei comigo mesmo que poderiamos inicializar os atributor no construtor também. Esta seria uma opção viavel?  Obrigado
+
+E então foi dito pelo instrutor, que ao utilizar a annotation `@BeforeEach` é garantido que cada teste seja rodado de forma independente.
