@@ -138,3 +138,58 @@ Exemplo de aplicações das annotations acima:
 - Inicializar conexão para cada teste;
 - Finalizar conexão para cada teste.
 
+Métodos privados **não** são testados diretamente. No tópico "4. Como testar métodos privados?" foi criado um método privado chamado `arredondarSalario`:
+
+```java
+	private void arredondarSalario() {
+		this.salario = this.salario.setScale(2, RoundingMode.HALF_UP);		// arredonda o valor para cima
+	}
+```
+
+E no método `reajustarSalario` invocamos ele:
+
+```java
+	public void reajustarSalario(BigDecimal reajuste) {
+		this.salario = this.salario.add(reajuste);
+		arredondarSalario();
+	}
+```
+
+Ocorre que não testamos o método privado, mas quando o invocamos em um método que é público (`reajustarSalario`), ele mesmo já testa. Ou seja, não o testamos separadamente.
+
+#### Tópico: 05. O que testar na aplicação?
+
+Os métodos `getters` e `setters` não precisam ser testados, pois são padrões, **não existem regras de negócio neles**.
+
+Só é testado aquilo que tem:
+
+- Regras de negócio;
+- Algoritmos;
+- Validação;
+- Coisas que tendem a **mudar** no futuro.
+
+### Nota de fim de curso (ctrl c, ctrl v)
+
+Chegamos ao fim do nosso treinamento!
+
+Aqui, aprendemos a fazer testes automatizados e a usar o JUnit.
+
+Usamos uma aplicação que simula um sistema de folha de pagamento de Recursos Humanos com a classe BonusService, que continha uma regra de negócio importante para essa aplicação.
+
+Descobrimos como testar essa classe construindo um código de teste depois que o BonusService já foi implementado. Nessa etapa, aprendemos a:
+
+-    Adicionar o JUnit ao projeto
+-    Usar anotações de teste (@Test)
+-    Fazer assertivas (asserts)
+
+Também vimos que é possível começar o processo pela escrita do teste com a abordagem TDD (Desenvolvimento Guiado por Teste). Nela, percebemos que o teste serve de rascunho para modelarmos o design do nosso código e depois partir para a implementação. Nessa etapa, também aprendemos a lidar com as exceptions e verificá-las.
+
+Fizemos uma implementação cheia de ifs e elses e depois usamos o padrão de projeto strategy para fazer uma refatoração desse código. Depois disso, apresentamos algumas boas práticas, como refatorar o código do teste, e usamos alguns recursos do JUnit como @AfterEach e o @BeforeEach para simplificar o código. Por fim, discutimos quais códigos devem ou não ser testados numa aplicação.
+
+E esses foram os objetivos do nosso treinamento! Se você já trabalha com testes automatizados, pode ser que já conheça os temas abordados aqui, mas a ideia era mostrar os testes automatizados para quem nunca trabalhou com eles ou está começando a escrevê-los, especialmente com a biblioteca JUnit na linguagem Java.
+
+Aqui na Alura temos outros treinamentos para você dar sequência no seu aprendizado. Neste curso, focamos nos testes de unidade, mas temos cursos que abordam os testes de integração, que integram dois sistemas distintos, os de aceitação, que simulam o comportamento do usuário e diversos outros cursos que podem expandir o seu conhecimento.
+
+Por isso, recomendamos que você faça esses cursos para complementar seus estudos e aprofundar seus conhecimentos em testes automatizados em Java.
+
+Esperamos que você tenha gostado e nos vemos em outros treinamentos aqui na Alura! Não deixe de usar o nosso fórum para postar dúvidas e ajudar outras pessoas que também estão aprendendo. Um abraço!
